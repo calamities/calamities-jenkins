@@ -1,5 +1,6 @@
 node('master') {
-    def groovy_file = "${JOB_NAME}/execute.groovy"
+    def workspace = WORKSPACE
+    def groovy_file = "./${workspace}/${JOB_NAME}/execute.groovy"
     def exec = load(groovy_file)
     exec.main()
 }
