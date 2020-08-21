@@ -1,12 +1,5 @@
-pipeline {
-    agent { label 'master' }
-    stages {
-        stage('Run Groovy Script') {
-            script {
-                def groovy_file = "./${JOB_NAME}/execute.groovy"
-                def exec = load(groovy_file)
-                exec.main()
-            }
-        }
-    }
+node('master') {
+    def groovy_file = "./${JOB_NAME}/execute.groovy"
+    def exec = load(groovy_file)
+    exec.main()
 }
